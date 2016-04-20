@@ -1,6 +1,6 @@
 // Exercise 1
 
-// TODO write a BankAccount class that implements the following:
+// write a BankAccount class that implements the following:
 //
 //   BankAccount(balance)
 //
@@ -10,6 +10,28 @@
 //
 //   .balance(n)
 //      returns balance
+
+export class BankAccount {
+  constructor(balance) {
+    this._balance = balance;
+  }
+
+  deposit(n) {
+    let newBalance = this._balance + n;
+    if (newBalance < 0) {
+      throw OutOfFunds;
+    } else {
+      this._balance = newBalance;
+    }
+
+    return this._balance;
+  }
+
+  balance() {
+    return this._balance;
+  }
+
+}
 
 // Exercise 2
 
