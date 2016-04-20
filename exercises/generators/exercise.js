@@ -16,6 +16,14 @@
  * TODO yield up key value pairs as arrays
  */
 
+export function *objectEntries(object) {
+  const keys = Object.keys(object);
+
+  for (const key of keys) {
+    yield [key, object[key]];
+  }
+}
+
 
 /**
  * Exercise 2
@@ -78,12 +86,33 @@ export function events(emitter, makeGen) {
  *
  */
 
-// TODO import 'co' module
-// TODO Read up the documentation on `co.wrap()`.
-// TODO export your helper method, accepting a variable number of promise arguments
-// TODO rensure you wait for result of each promise
-// TODO handle any rejected promises
-// TODO return list of - rejection reasons or resolution values
+// import 'co' module
+import co from 'co';
+
+// Read up the documentation on `co.wrap()`.
+// export your helper method, accepting a variable number of promise arguments
+export const settleAll = co.wrap(function *cat(...promises) {
+  const settledValues = [];
+
+  // rensure you wait for result of each promise
+  for (const promise of promises) {
+    let value;
+    try {
+      value = yield promise;
+    } catch (ex) {
+      // handle any rejected promises
+      value = ex;
+    }
+
+    settledValues.push(value);
+  }
+
+  // return list of - rejection reasons or resolution values
+  return settledValues;
+
+});
+
+
 
 
 /**
