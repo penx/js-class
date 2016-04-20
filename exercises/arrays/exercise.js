@@ -14,12 +14,20 @@
 //
 /* eslint no-unused-vars:0 */
 
-export { dig };
+export { digReduce as dig };
 
-function dig(/* TODO define params */) {
-  // TODO implement with for ... of etc
+function dig(input, ...target) {
+  let currentNode = input;
+  for (const key of target) {
+    if (currentNode[key]) {
+      currentNode = currentNode[key];
+    } else {
+      return;
+    }
+  };
+  return currentNode;
 }
 
-function digReduce(/* TODO define params */) {
-  // TODO implement with a reduce
+function digReduce(object, ...properties) {
+  return properties.reduce((obj, prop) => obj ? obj[prop] : undefined, object);
 }
