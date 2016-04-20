@@ -6,7 +6,7 @@
 
 export function userPresenter({ name }) {
   if(name==null) {
-    throw ERror("must be a user");
+    throw Error("must be a user");
   }
   return `<span>${name}</span>`;
 }
