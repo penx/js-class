@@ -21,10 +21,11 @@ var hattersTreat = 'darjeeling in a conch-shell';
  * 1) learning to export with the Hatter
  */
 
-// TODO export the Hatter as default!
+// export the Hatter as default!
+export { Hatter as default };
 
-// TODO export the hattersTreat as treat
-
+// export the hattersTreat as treat
+export { hattersTreat as treat };
 
 /**
  * 2) learning to import with the March Hare
@@ -33,11 +34,11 @@ var hattersTreat = 'darjeeling in a conch-shell';
  */
 
 
-// TODO import the March Hare's default, and its treat
+// import the March Hare's default, and its treat
+import { default as MarchHare, treat as MarchHareTreat } from './MarchHare';
 
-// TODO rexport as MarchHare and MarchHareTreat
-
-
+// rexport as MarchHare and MarchHareTreat
+export { MarchHare, MarchHareTreat };
 
 /**
  * 2) learning to import & export in one go with Alice
@@ -45,4 +46,6 @@ var hattersTreat = 'darjeeling in a conch-shell';
  * module is './Alice'
  */
 
-// TODO using the rexport syntax, import and rexport Alice (Alice module default) and AliceTreat
+// using the rexport syntax, import and rexport Alice (Alice module default) and AliceTreat
+import { default as Alice, treat as AliceTreat } from './Alice';
+export { Alice, AliceTreat };
