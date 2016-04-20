@@ -146,9 +146,14 @@ export class Stack {
     return this._values.push(v);
   }
 
-  // TODO find out how to tell the interpreter this
+  // find out how to tell the interpreter this
   //      object can be iterated (it's defining a method with a special name)
-  // TODO consider how the interation needs to occur
+  *[Symbol.iterator]() {
+    // consider how the interation needs to occur
+    while (this._values.length > 0) {
+      yield this.pop();
+    }
+  }
 
 }
 
