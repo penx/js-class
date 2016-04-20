@@ -37,16 +37,32 @@
 export function sampleQueries(queryStream, n, cb) {
 
   // TODO somewhere to store results
+  const queries = [];
+  const durations = [];
+  let completed = 0;
 
   queryStream.on('query', queryHandler);
 
+
   function queryHandler(query, time) {
     console.log(`start id:${query.id} time:${time}`);
+    const indexOfQuery = queries.length;
+    if (indexOfQuery >= n) {
+      return;
+    }
+
+    queries.push(query);
+    durations.push(time);
 
     query.on('end', (time) => {
       console.log(`end id:${query.id} time:${time}`);
 
       // TODO start thinking about what to do here
+      durations[indexOfQuery] =  time - durations[indexOfQuery];
+      completed++;
+      if (completed === n) {
+        cb({ queries, durations });
+      }
     });
   }
 }
