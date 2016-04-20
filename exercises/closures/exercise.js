@@ -6,6 +6,12 @@
 // @type function loggerFunction(args: Array<any>, callCount: number): void
 // @type function spy(originalFn: Function, logger: loggerFunction, count? : number): spiedFunction
 export function spy(originalFn, logger, count = 0) {
+  return function (...args) {
+    count++;
+    logger(args, count);
+
+    return originalFn(...arguments);
+  };
 };
 
 
@@ -16,7 +22,7 @@ export function listenForClickEs6(elements, onClicked) {
   //
   // How can we solve using ES6? Is there more than one way?
   for (var i = 0; i < elements.length; i++) {
-    var element = elements[i];
+    let element = elements[i];
 
     element.addEventListener('click', function clickHandler() {
       onClicked(element);
@@ -27,12 +33,17 @@ export function listenForClickEs6(elements, onClicked) {
 // TODO fix the following code, using ES5 (no lets, consts etc)
 export function listenForClickEs5(elements, onClicked) {
 
+  var createHandler = function (element) {
+    return function() {
+      onClicked(element);
+    };
+  };
+
   // How can we solve using ES5?
   for (var i = 0; i < elements.length; i++) {
     var element = elements[i];
-    element.addEventListener('click', function () {
-      onClicked(element);
-    });
+    var handler = createHandler(element);
+    element.addEventListener('click', createHandler(element));
   }
 
 }
