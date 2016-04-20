@@ -37,7 +37,7 @@ function scenarioOne() {
   }
 }
 
-ANSWERS.scenarioOne = 'TODO';
+ANSWERS.scenarioOne = 'inner';
 
 function scenarioTwo() {
 
@@ -52,7 +52,7 @@ function scenarioTwo() {
 
 }
 
-ANSWERS.scenarioTwo = 'TODO';
+ANSWERS.scenarioTwo = 'out';
 
 function scenarioThree() {
   var A = 'outer';
@@ -75,7 +75,7 @@ function scenarioThree() {
 
 }
 
-ANSWERS.scenarioThree = 'TODO';
+ANSWERS.scenarioThree = 'helper';
 
 function scenarioFour() {
   const A = 'outer';
@@ -88,7 +88,7 @@ function scenarioFour() {
 
 }
 
-ANSWERS.scenarioFour = 'TODO';
+ANSWERS.scenarioFour = 'outer';
 
 function scenarioFive() {
   let A = 'outer';
@@ -102,7 +102,7 @@ function scenarioFive() {
   return A;
 }
 
-ANSWERS.scenarioFive = 'TODO';
+ANSWERS.scenarioFive = 'inner';
 
 function scenarioSix() {
   var A;
@@ -117,7 +117,7 @@ function scenarioSix() {
   }
 }
 
-ANSWERS.scenarioSix = 'TODO';
+ANSWERS.scenarioSix = 10;
 
 function scenarioSeven() {
 
@@ -147,7 +147,7 @@ function scenarioSeven() {
   }
 }
 
-ANSWERS.scenarioSeven = 'TODO';
+ANSWERS.scenarioSeven = 6;
 
 
 
