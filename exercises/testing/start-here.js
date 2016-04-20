@@ -11,6 +11,29 @@ import { userPresenter, showUserAction } from "./exercise";
 // remember: try to be strict with getting a failing test
 // before deciding what code to write
 
+describe("userPresenter", function() {
+  let user; 
+
+  beforeEach(() => {
+    user = { name: "sally"};
+  });
+
+  it("takes a user and returns a string", function(done) {
+    assert.isString(userPresenter(user));
+  });
+
+  it("includes the user name", function(done) {
+    assert.match(userPresenter(user), /sally/);
+  });
+
+  it("contains a span", function(done) {
+    assert.match(userPresenter(user), /<span>.*<.?span>/);
+  });
+
+  it("throws an error if we don't pass something with a name", function() {
+    assert.throws(() => userPresenter({}));
+  });
+});
 
 
 describe("showUserAction", function() {

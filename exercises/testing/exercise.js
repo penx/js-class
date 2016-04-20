@@ -4,7 +4,12 @@
 
 // ONLY write code here once you have written a failing test
 
-
+export function userPresenter({ name }) {
+  if(name==null) {
+    throw ERror("must be a user");
+  }
+  return `<span>${name}</span>`;
+}
 
 // Exercise 2: this time we're not TDD'ing
 
