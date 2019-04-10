@@ -9,7 +9,9 @@
     "ci": "npm run lint:all && npm run style:all && npm test",
     "slides": "slides/tools/build-template.sh slides/src < slides/index.template.md > slides/index.html",
     "test": "node exercises/.sys/run-all.js",
-    "slides:dev": "nodemon --ext md,js,css --watch slides --exec 'npm run slides'"
+    "slides:dev": "nodemon --ext md,js,css --watch slides --exec 'npm run slides'",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "author": "Tim Ruffles <oi@truffles.me.uk>",
   "license": "©",
@@ -24,16 +26,17 @@
     "chalk": "^1.1.3",
     "co": "^4.6.0",
     "es6-module-loader": "^0.17.11",
-    "eslint": "^2.8.0",
+    "eslint": "^4.18.2",
     "eslint-config-standard": "^5.1.0",
     "eslint-plugin-promise": "^1.1.0",
     "eslint-plugin-standard": "^1.3.2",
     "jscs": "^3.0.3",
     "lodash": "^4.0.0",
-    "mocha": "^2.4.5",
+    "mocha": "^4.0.0",
     "pprint": "0.0.1",
     "regenerator": "^0.8.42",
-    "sinon": "^1.17.2"
+    "sinon": "^1.17.2",
+    "snyk": "^1.149.0"
   },
   "devDependencies": {
     "hogan.js": "~3.0.2",
@@ -62,7 +65,10 @@
       "no-lone-blocks": "off",
       "space-before-function-paren": "off",
       "no-trailing-spaces": "off",
-      "eqeqeq": ["error", "allow-null"],
+      "eqeqeq": [
+        "error",
+        "allow-null"
+      ],
       "comma-spacing": "off",
       "quotes": "off",
       "comma-dangle": "off",
@@ -70,5 +76,6 @@
       "semi": "off",
       "no-use-before-define": "off"
     }
-  }
+  },
+  "snyk": true
 }
